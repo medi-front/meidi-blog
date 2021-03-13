@@ -30,6 +30,6 @@ export class UserLogin {
 }
 
 export class UserRegister {
-  userName?: string;
+  name?: string;
   password?: string;
 }

@@ -40,6 +40,7 @@ export class UserService {
   async createUser(user: CreateUserInput): Promise<User> {
     const userModel = new User()
     userModel.userName = user.name
+    userModel.password = user.password
     console.log(userModel)
     return await this.userModel.save(userModel)
   }

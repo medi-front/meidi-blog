@@ -48,12 +48,12 @@ export class UserController {
     console.log(user)
     let res = {}
     try {
-      const users: User[] = await this.userService.getUserByName(user.userName)
-      if(users.length > 0 && users[0].userName == user.userName){
+      const users: User[] = await this.userService.getUserByName(user.name)
+      if(users.length > 0 && users[0].userName == user.name){
         res = { success: false, message: 'Fail', data: "用户名已存在" }
       }else{
         const createUser: CreateUserInput = new CreateUserInput()
-        createUser.name = user.userName
+        createUser.name = user.name
         createUser.password = user.password
         const resUser: User = await this.userService.createUser(createUser)
         if(resUser){
