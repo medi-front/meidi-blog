@@ -1,12 +1,7 @@
 <template>
-  <el-form
-    ref="loginForm"
-    :model="loginUser"
-    :rules="rules"
-    class="loginForm sign-in-form"
-  >
-    <el-form-item label="" prop="mobile">
-      <el-input v-model="loginUser.mobile" placeholder="请输入账号"></el-input>
+  <el-form ref="loginForm" :model="loginUser" :rules="rules" class="loginForm sign-in-form">
+    <el-form-item label="" prop="userName">
+      <el-input v-model="loginUser.userName" placeholder="请输入账号"></el-input>
     </el-form-item>
     <el-form-item label="" prop="password">
       <el-input
@@ -17,10 +12,7 @@
     </el-form-item>
 
     <el-form-item>
-      <el-button
-        @click="handleLogin('loginForm')"
-        type="primary"
-        class="submit-btn"
+      <el-button @click="handleLogin('loginForm')" type="primary" class="submit-btn"
         >提交</el-button
       >
     </el-form-item>
@@ -35,6 +27,7 @@
 <script lang="ts">
 import { useRouter } from 'vue-router'
 import { getCurrentInstance, ref } from 'vue'
+import axios from 'axios'
 export default {
   props: {
     loginUser: {
@@ -58,7 +51,11 @@ export default {
         if (valid) {
           const params: object = Object.assign({}, ctx.loginUser, true)
           console.log(params, '提交的参数')
-          router.push('/shop/index')
+            axios.post('/api/user/login', params)
+            .then(res => {
+              console.log(res)
+              router.push('/home')
+            })
         } else {
           console.log('error submit!!')
           return false

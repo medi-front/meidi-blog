@@ -1,0 +1,13 @@
+{
+  "name": "default",
+  "type": "mysql",
+  "host": "8.135.135.96",
+  "port": 3306,
+  "username": "root",
+  "password": "password",
+  "database": "boke",
+  "synchronize": true,
+  "entities": [
+    "src/entity/*.ts"
+  ]
+}

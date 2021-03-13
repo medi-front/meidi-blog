@@ -9,7 +9,7 @@ const router = createRouter({
 
 router.addRoute({
   path: '/',
-  redirect: '/home'
+  redirect: '/Login'
 })
 
 if (import.meta.env.MODE === 'development') {

@@ -8,7 +8,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "api-interfaces": "^0.1.0",
     "element-plus": "^v1.0.1-beta.24",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.20",

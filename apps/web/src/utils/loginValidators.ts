@@ -3,11 +3,13 @@ import { ref } from "vue";
 interface User {
   mobile: string;
   password: string;
+  userName: string;
 }
 
 export const loginUser = ref<User>({
   mobile: "",
   password: "",
+  userName: ""
 });
 
 interface Rules {
@@ -50,9 +52,9 @@ export const rules = ref<Rules>({
       trigger: "blur",
     },
     {
-      min: 6,
+      min: 3,
       max: 30,
-      message: "密码长度必须大于6个字符小于30字符",
+      message: "密码长度必须大于3个字符小于30字符",
       trigger: "blur",
     },
   ],

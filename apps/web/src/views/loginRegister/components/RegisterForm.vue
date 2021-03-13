@@ -58,8 +58,9 @@
 
 <script lang="ts">
 import { ref, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 // import { Ref } from 'vue-property-decorator'
-// import axios from 'axios' // 仅限在当前组件使用
+import axios from 'axios' // 仅限在当前组件使用
 
 export default {
   props: {
@@ -75,11 +76,21 @@ export default {
   setup() {
     // @ts-ignore
     const { ctx } = getCurrentInstance()
+    const router = useRouter()
 
     const handleRegister = (formName: string) => {
       ctx.$refs[formName].validate((valid: boolean) => {
         if (valid) {
-          alert('submit!')
+          const params: object = Object.assign({}, ctx.registerUser, true)
+          console.log(params, '提交的参数')
+          axios.post('/api/user/register', params)
+          .then(res => {
+            if(res){
+              console.log(res)
+              router.push('/home')
+            }
+
+          })
         } else {
           console.log('error submit!!')
           return false
